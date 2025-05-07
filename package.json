@@ -1,0 +1,41 @@
+{
+    "name": "ventura-launcher",
+    "version": "1.0.0",
+    "description": "Ventura Launcher",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "build": "electron-builder"
+    },
+    "build": {
+      "appId": "com.ventura.launcher",
+      "productName": "VenturaLauncher",
+      "files": [
+       "**/*"
+      ],
+      "extraResources": [
+        "rocket.ico"
+      ],
+      "win": {
+        "icon": "rocket.ico",
+        "target": [
+          "nsis"
+        ]
+      },
+      "nsis": {
+        "oneClick": false,
+        "perMachine": false,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true,
+        "shortcutName": "Ventura Launcher"
+      },
+      "directories": {
+        "output": "dist"
+      }
+    },
+    "devDependencies": {
+      "electron": "^27.3.11",
+      "electron-builder": "^24.13.3"
+    }
+  }

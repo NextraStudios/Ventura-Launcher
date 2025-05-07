@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ventura Launcher</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .titlebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        -webkit-app-region: drag;
+        background: transparent;
+        z-index: 999;
+      }
+
+      .container {
+        position: relative;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 40px 20px 60px 20px; /* extra bottom padding for power button */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        width: 350px;
+        height: 400px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px #00ffff;
+      }
+
+      button {
+        font-size: 18px;
+        padding: 12px 25px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: white;
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .start-btn {
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        box-shadow: 0 0 15px #00c6ff;
+      }
+
+      .start-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #00c6ff;
+      }
+
+      .stop-btn {
+        background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        box-shadow: 0 0 15px #ff416c;
+      }
+
+      .stop-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #ff416c;
+      }
+
+      footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #cccccc;
+      }
+
+      .power-button {
+        position: absolute;
+        bottom: 10px;
+        left: 48%;
+        transform: translateX(-50%);
+        font-size: 18px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        -webkit-app-region: no-drag;
+        transition: color 0.2s ease;
+        padding: 5px;
+      }
+
+      .power-button:hover {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="titlebar"></div>
+
+    <div class="container">
+      <h1>🚀 Ventura Launcher</h1>
+      <button id="start" class="start-btn">Start Game</button>
+      <button id="stop" class="stop-btn">Kill Game</button>
+      <footer>Developed by Techno.DEV</footer>
+
+      <!-- ✅ Centered Power Button -->
+      <button class="power-button" title="Exit">⏻</button>
+    </div>
+
+    <script>
+      document.getElementById("start").addEventListener("click", () => {
+        window.api.startFortnite();
+      });
+
+      document.getElementById("stop").addEventListener("click", () => {
+        window.api.stopFortnite();
+      });
+
+      document.querySelector(".power-button").addEventListener("click", () => {
+        window.api.closeApp(); // Closes app via Electron
+      });
+    </script>
+  </body>
+</html>
